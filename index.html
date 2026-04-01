@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Transparency Group — University of Copenhagen</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-dark:  #1a2e4a;
+      --blue-mid:   #1e3f6e;
+      --blue-light: #2e6db4;
+      --blue-pale:  #e8f0f5;
+      --accent:     #5b8fa8;
+      --green-sage: #7da98a;
+      --text:       #1a1a2e;
+      --muted:      #4a5568;
+      --border:     #b8cfd8;
+      --white:      #ffffff;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--blue-dark);
+      color: var(--white);
+      padding: 1.8rem 0 1.6rem;
+      border-bottom: 4px solid var(--accent);
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .header-logo {
+      flex-shrink: 0;
+      width: 110px;
+      height: auto;
+    }
+    .header-text { flex: 1; }
+    header .affiliation {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9bbde0;
+      margin-bottom: 0.4rem;
+    }
+    header h1 {
+      font-size: 1.85rem;
+      font-weight: normal;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    header .tagline {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+      color: #a8c8d8;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--blue-mid);
+    }
+    nav ul {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      list-style: none;
+      display: flex;
+      gap: 0;
+    }
+    nav ul li a {
+      display: block;
+      padding: 0.65rem 1.1rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+      color: #cde0f5;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, color 0.15s;
+    }
+    nav ul li a:hover {
+      background: var(--blue-dark);
+      color: var(--white);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    section { margin-bottom: 3rem; }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: normal;
+      color: var(--blue-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+
+    p { margin-bottom: 0.8rem; color: var(--text); }
+
+    /* Research themes */
+    .themes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .theme-tag {
+      background: var(--blue-pale);
+      border-left: 3px solid var(--accent);
+      padding: 0.45rem 0.75rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.82rem;
+      color: var(--blue-dark);
+    }
+
+    /* ── MEMBERS ── */
+    .member {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 1.4rem;
+      background: #f7fafa;
+    }
+    .member h3 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--blue-dark);
+      margin-bottom: 0.15rem;
+    }
+    .member .role {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .member p {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .member-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+    .member-links a {
+      color: var(--white);
+      background: var(--blue-light);
+      padding: 0.25rem 0.7rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+    .member-links a:hover { background: var(--blue-dark); }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { list-style: none; }
+    .pub-list li {
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+      font-size: 0.93rem;
+    }
+    .pub-list li:last-child { border-bottom: none; }
+    .pub-title {
+      font-style: italic;
+      color: var(--blue-dark);
+    }
+    .pub-title a {
+      color: var(--blue-dark);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--blue-light);
+    }
+    .pub-title a:hover {
+      color: var(--blue-light);
+      border-bottom-style: solid;
+    }
+    .pub-meta {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      background: var(--blue-pale);
+      border-left: 4px solid var(--blue-light);
+      padding: 1.2rem 1.5rem;
+      font-size: 0.93rem;
+    }
+    .contact-block a { color: var(--blue-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-dark);
+      color: #7aa5cc;
+      text-align: center;
+      padding: 1.2rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      border-top: 3px solid var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="logo.png" alt="Financial Transparency Group logo" class="header-logo">
+    <div class="header-text">
+      <p class="affiliation">University of Copenhagen &mdash; Department of Computer Science (DIKU)</p>
+      <h1>Financial Transparency Group</h1>
+      <p class="tagline">Advancing transparency, accountability, and integrity in financial systems through computational research</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#members">Members</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>The Financial Transparency Group is a research center located at the Department of Computer Science (DIKU), University of Copenhagen. The group promotes applied, multidisciplinary research addressing computational and organisational challenges at the intersection of financial systems, distributed ledger technology, and regulatory compliance.</p>
+    <p>Our work spans the design and analysis of decentralised financial infrastructure, the governance of digital asset ecosystems, and the implications of blockchain technology for reporting, transparency, and market integrity. We collaborate with industry partners, regulatory bodies, and academic institutions, and accept applications from qualified PhD candidates and postdoctoral researchers on an ongoing basis.</p>
+  </section>
+
+  <!-- RESEARCH THEMES -->
+  <section id="research">
+    <h2>Research Themes</h2>
+    <p>The group's research addresses a broad set of problems in computational finance and digital asset infrastructure:</p>
+    <div class="themes">
+      <div class="theme-tag">Decentralized Finance (DeFi)</div>
+      <div class="theme-tag">Blockchain &amp; Smart Contracts</div>
+      <div class="theme-tag">Automated Market Makers</div>
+      <div class="theme-tag">Decentralized Autonomous Organizations (DAOs)</div>
+      <div class="theme-tag">Compliance &amp; Regulatory Reporting</div>
+      <div class="theme-tag">Digital Asset Governance</div>
+      <div class="theme-tag">Post-Trade Processing</div>
+      <div class="theme-tag">Financial Transparency &amp; Market Integrity</div>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section id="members">
+    <h2>Members</h2>
+
+    <div class="member">
+      <h3>Omri Ross</h3>
+      <p class="role">Associate Professor &mdash; Department of Computer Science, University of Copenhagen</p>
+      <p>Omri Ross leads the Financial Transparency Group. His research focuses on decentralised finance (DeFi), automated market makers, and the application of blockchain technology to post-trade processing and financial contract execution. He has collaborated extensively with industry and regulatory stakeholders, and supervises PhD research in financial blockchain infrastructure.</p>
+      <div class="member-links">
+        <a href="https://scholar.google.com/citations?user=aevQE00AAAAJ&hl=da" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://di.ku.dk/english/staff/?pure=en/persons/295505" target="_blank" rel="noopener">DIKU Profile</a>
+        <a href="https://www.linkedin.com/in/omriross" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="member">
+      <h3>Johannes Rude Jensen</h3>
+      <p class="role">Visiting Researcher &mdash; Department of Computer Science, University of Copenhagen</p>
+      <p>Johannes Rude Jensen's research centres on financial computation, distributed ledger technology, and DeFi infrastructure. His work examines post-trade settlement, automated market makers, NFT market integrity, and blockchain-based financial systems for emerging economies. He has published widely at leading information systems conferences and venues.</p>
+      <div class="member-links">
+        <a href="https://scholar.google.com/citations?user=7mm-1fsAAAAJ&hl=da" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/johannes-jensen-756b0bb6/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="member">
+      <h3>Michel Avital</h3>
+      <p class="role">Professor of Digitalization &mdash; Department of Digitalization, Copenhagen Business School</p>
+      <p>Michel Avital's research examines the intersections of digital innovation, organisational transformation, and emerging technology ecosystems. He has published extensively on blockchain-enabled business models, decentralised identity management, digital asset governance, and the social implications of information technology. He is an editorial board member of leading technology journals and a frequent organiser at major international IS conferences.</p>
+      <div class="member-links">
+        <a href="https://scholar.google.com/citations?user=-rxuqEIAAAAJ&hl=da" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/michelavital/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.cbs.dk/en/research/departments-and-centres/department-of-digitalization/staff/madigi" target="_blank" rel="noopener">CBS Profile</a>
+      </div>
+    </div>
+
+    <div class="member">
+      <h3>Nina-Birte Schirrmacher</h3>
+      <p class="role">Researcher &mdash; Financial Transparency Group</p>
+      <p>Nina-Birte Schirrmacher investigates the relationship between organisational practices and emerging technologies, with a focus on decentralised autonomous organisations (DAOs), token-driven governance, and accountability in decentralised systems. Her work also addresses the unintended consequences of digital innovation, including cybercrime and digital divides. She has presented her research at leading IS venues including ICIS and the Academy of Management Annual Meeting.</p>
+      <div class="member-links">
+        <a href="https://scholar.google.com/citations?user=1alsUAMAAAAJ&hl=da&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/nina-schirrmacher/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2>Selected Publications</h2>
+    <p>A representative selection of recent publications by group members. Full publication lists are available via individual Google Scholar profiles above.</p>
+
+    <ul class="pub-list">
+      <li>
+        <div class="pub-title"><a href="https://aisel.aisnet.org/icis2024/digtech_fow/digtech_fow/7/" target="_blank" rel="noopener">Enacting Accountability in Decentralized Organizations: A Study of the Optimism Collective DAO</a></div>
+        <div class="pub-meta">Schirrmacher, N.-B., Jensen, J. R., Avital, M., &amp; Ross, O. &mdash; <em>ICIS 2024</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://aisel.aisnet.org/icis2023/blockchain/blockchain/8/" target="_blank" rel="noopener">Tokens Matter: How to Win Votes and Influence DAOs</a></div>
+        <div class="pub-meta">Jensen, J. R., Schirrmacher, N.-B., Avital, M., &amp; Ross, O. &mdash; <em>ICIS 2023</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://arxiv.org/abs/2202.03866" target="_blank" rel="noopener">NFT Wash Trading: Quantifying Suspicious Behaviour in NFT Markets</a></div>
+        <div class="pub-meta">von Wachter, V., Jensen, J. R., Regner, F., &amp; Ross, O. &mdash; <em>Financial Cryptography Workshops 2022</em> &mdash; DOI: 10.1007/978-3-031-32415-4_20</div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://doi.org/10.7250/csimq.2021-26.03" target="_blank" rel="noopener">An Introduction to Decentralized Finance (DeFi)</a></div>
+        <div class="pub-meta">Jensen, J. R., von Wachter, V., &amp; Ross, O. &mdash; <em>Complex Systems Informatics and Modeling Quarterly, 26(26), 2021</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://aisel.aisnet.org/icis2021/is_future_work/is_future_work/17/" target="_blank" rel="noopener">Token-Centric Work Practices in Fluid Organizations: The Cases of Yearn and MakerDAO</a></div>
+        <div class="pub-meta">Schirrmacher, N.-B., Jensen, J. R., &amp; Avital, M. &mdash; <em>ICIS 2021</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.bcra.2021.100014" target="_blank" rel="noopener">Blockchain-enabled Decentralized Identity Management: The Case of Self-Sovereign Identity in Public Transportation</a></div>
+        <div class="pub-meta">Stockburger, L., Kokosioulis, G., Mukkamala, A. M., Mukkamala, R. R., &amp; Avital, M. &mdash; <em>Blockchain: Research and Applications, 2021</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://ssrn.com/abstract=3745568" target="_blank" rel="noopener">Managing Risk in DeFi</a></div>
+        <div class="pub-meta">Jensen, J. R., &amp; Ross, O. &mdash; <em>PoEM Workshops 2020</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://doi.org/10.1007/s12599-017-0507-z" target="_blank" rel="noopener">Automated Execution of Financial Contracts on Blockchains</a></div>
+        <div class="pub-meta">Egelund-Müller, B., Elsman, M., Henglein, F., &amp; Ross, O. &mdash; <em>Business and Information Systems Engineering, 59(6), 2017</em></div>
+      </li>
+      <li>
+        <div class="pub-title"><a href="https://doi.org/10.1007/s12599-017-0505-1" target="_blank" rel="noopener">Blockchain Technology in Business and Information Systems Research</a></div>
+        <div class="pub-meta">Beck, R., Avital, M., Rossi, M., &amp; Thatcher, J. B. &mdash; <em>Business &amp; Information Systems Engineering, 59(6), 2017</em></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-block">
+      <p><strong>Financial Transparency Group</strong><br>
+      Department of Computer Science (DIKU)<br>
+      University of Copenhagen<br>
+      Universitetsparken 5, 2100 Copenhagen, Denmark</p>
+      <p>Enquiries regarding research collaboration or PhD applications may be directed to the group:</p>
+      <p>
+        Omri Ross &mdash; <a href="mailto:omri@di.ku.dk">omri@di.ku.dk</a><br>
+        Johannes Rude Jensen &mdash; <a href="mailto:Johannesrudejensen@gmail.com">Johannesrudejensen@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; Financial Transparency Group &mdash; Department of Computer Science, University of Copenhagen
+</footer>
+
+</body>
+</html>
